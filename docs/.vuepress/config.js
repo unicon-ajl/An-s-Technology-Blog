@@ -77,7 +77,7 @@ module.exports = {
           collapsable: true, // 禁止折叠（新手推荐）
           // 子菜单：对应 docs/guide/ 下的文件
           children: [
-            "", // 空字符串 → /guide/ → docs/guide/README.md
+            ["", "指南"], // 空字符串 → /guide/ → docs/guide/README.md
             ["getting-started", "快速上手"], // → /guide/getting-started/ → docs/guide/getting-started.md
             ["directory-structure", "目录结构"], // 扩展：新增目录结构说明页 → docs/guide/directory-structure.md
           ],
@@ -97,7 +97,9 @@ module.exports = {
         {
           title: "关于页面",
           collapsable: false,
-          children: [""], // 对应 /about/ → docs/about.md
+          children: [
+            ["", "关于我"], // 空字符串 → /about/ → docs/about.md
+          ], // 对应 /about/ → docs/about.md
         },
       ],
     },
@@ -118,7 +120,7 @@ module.exports = {
     editLinkText: "发现错误？点击编辑", // 自定义提示文字
     // 编辑链接模板（替换为你的仓库地址）
     editLinkPattern:
-      "https://github.com/unicon-ajl/An-s-Technology-Blog/edit/main/docs/:path",
+      "https://github.com/unicon-ajl/An-s-Technology-Blog/edit/master/docs/:path",
 
     /**
      * 页脚配置（可选）

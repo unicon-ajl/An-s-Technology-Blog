@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "小安的技术博客",
   "scripts": {
-    "dev": "vuepress dev docs",
+    "dev": "nodemon --watch .vuepress/config.js --exec \"yarn vuepress dev docs\"",
     "build": "vuepress build docs"
   },
   "main": "index.js",
@@ -11,6 +11,7 @@
   "author": "Unicorn",
   "license": "MIT",
   "devDependencies": {
+    "nodemon": "^3.1.11",
     "vuepress": "^1.9.10"
   }
 }
