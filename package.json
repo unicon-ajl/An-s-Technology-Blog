@@ -3,16 +3,14 @@
   "version": "1.0.0",
   "description": "小安的技术博客",
   "scripts": {
-    "dev": "nodemon --watch .vuepress/config.js --watch .vuepress/nav.js --watch .vuepress/sidebar.js --exec \"node_modules/.bin/vuepress dev docs\"",
-    "build": "vuepress build docs"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   },
-  "main": "index.js",
   "repository": "https://github.com/unicon-ajl/An-s-Technology-Blog.git",
   "author": "Unicorn",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^3.1.11",
-    "vuepress": "^1.9.10",
-    "vuepress-plugin-flexsearch-pro": "^1.0.3"
+    "vitepress": "2.0.0-alpha.12"
   }
 }
