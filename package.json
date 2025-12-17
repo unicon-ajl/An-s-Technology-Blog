@@ -1,0 +1,16 @@
+{
+  "name": "vuepress-starter",
+  "version": "1.0.0",
+  "description": "小安的技术博客",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/unicon-ajl/An-s-Technology-Blog.git",
+  "author": "Unicorn",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.9.10"
+  }
+}
