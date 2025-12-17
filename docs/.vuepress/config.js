@@ -37,6 +37,10 @@ module.exports = {
     },
   },
 
+  markdown: {
+    extractHeaders: ["h1", "h2", "h3"], // 提取标题，同时触发页面元数据加载
+  },
+
   // ===================== 主题配置（默认主题的视觉/交互） =====================
   themeConfig: {
     /**
@@ -95,11 +99,20 @@ module.exports = {
       // 扩展：给 /about/ 路径单独配置侧边栏（可选，也可设为false关闭）
       "/about/": [
         {
-          title: "关于页面",
-          collapsable: false,
+          title: "关于页面1214444",
+          collapsable: true,
           children: [
-            ["", "关于我"], // 空字符串 → /about/ → docs/about.md
-          ], // 对应 /about/ → docs/about.md
+            ["", "首页"], // 空字符串 → /about/ → about/README.md
+            ["me", "博主介绍"], // → /about/me/ → about/me.md
+          ],
+        },
+        {
+          title: "更多信息", // 二级分组（可选，实现分组折叠）
+          collapsable: true, // 可折叠
+          children: [
+            ["blog", "博客说明"], // → /about/blog/ → about/blog.md
+            ["contact", "联系方式"], // → /about/contact/ → about/contact.md
+          ],
         },
       ],
     },
@@ -120,7 +133,7 @@ module.exports = {
     editLinkText: "发现错误？点击编辑", // 自定义提示文字
     // 编辑链接模板（替换为你的仓库地址）
     editLinkPattern:
-      "https://github.com/unicon-ajl/An-s-Technology-Blog/edit/master/docs/:path",
+      "https://github.com/unicon-ajl/An-s-Technology-Blog/edit/master/docs/$path",
 
     /**
      * 页脚配置（可选）
@@ -142,6 +155,8 @@ module.exports = {
     smoothScroll: true,
   },
 
+  templateDev: "./.vuepress/templates/dev.html", // 开发环境使用自定义模板
+
   // ===================== 额外配置（扩展功能） =====================
   /**
    * 插件配置（可选，示例：开启代码复制功能）
@@ -155,6 +170,14 @@ module.exports = {
       {
         // 图片点击放大
         selector: ".content-container img",
+      },
+    ],
+    [
+      "flexsearch-pro",
+      {
+        searchPaths: ["/"], // 搜索所有路径
+        searchHotkeys: ["s"], // 按s激活搜索
+        searchResultLength: 100, // 结果显示长度
       },
     ],
   ],

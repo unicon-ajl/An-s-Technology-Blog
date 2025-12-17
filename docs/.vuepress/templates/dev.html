@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="icon" href="{{ favicon }}">
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- 回到顶部按钮（优化样式） -->
+<style>
+  .back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px; /* 圆角更柔和 */
+    background: #42b983; /* 主色调 */
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease; /* 过渡更丝滑 */
+    box-shadow: 0 4px 12px rgba(66, 185, 131, 0.2); /* 柔和阴影 */
+  }
+  .back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .back-to-top:hover {
+    background: #359469; /* 悬停加深颜色 */
+    box-shadow: 0 6px 16px rgba(66, 185, 131, 0.3); /* 悬停增强阴影 */
+  }
+</style>
+<div class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
+
+  <!-- 控制按钮显示/隐藏 -->
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.back-to-top').classList.toggle('show', window.scrollY > 100);
+    });
+  </script>
+</body>
+</html>
