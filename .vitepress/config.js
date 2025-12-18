@@ -56,17 +56,21 @@ export default {
     sidebar: {
       "/guide/": [
         {
-          text: "VuePress 入门",
-          collapsible: true,
+          text: "Blog 指南",
+          // collapsed: false, // 可选：默认折叠（false 为默认展开）
+          items: [{ text: "指南", link: "/guide/" }],
+        },
+        {
+          text: "VitePress 入门",
+          collapsed: true,
           items: [
-            { text: "指南", link: "/guide/" },
             { text: "快速上手", link: "/guide/getting-started" },
             { text: "目录结构", link: "/guide/directory-structure" },
           ],
         },
         {
           text: "前端工程化",
-          collapsible: true,
+          collapsed: true,
           items: [
             { text: "Webpack 基础", link: "/guide/webpack-basic" },
             { text: "Yarn 使用技巧", link: "/guide/yarn-usage" },

@@ -15,7 +15,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /guide/getting-started/
+      link: /guide/
     - theme: alt
       text: 关于博主
       link: /about/me/
