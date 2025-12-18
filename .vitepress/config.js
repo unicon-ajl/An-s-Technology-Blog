@@ -80,7 +80,7 @@ export default {
       "/about/": [
         {
           text: "关于页面",
-          collapsible: true,
+          collapsed: false,
           items: [
             { text: "首页", link: "/about/" },
             { text: "博主介绍", link: "/about/me" },
@@ -88,7 +88,7 @@ export default {
         },
         {
           text: "更多信息",
-          collapsible: true,
+          collapsed: true,
           items: [
             { text: "联系方式", link: "/about/contact" },
             { text: "博客介绍", link: "/about/blog.md" },
