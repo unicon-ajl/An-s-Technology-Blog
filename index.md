@@ -10,7 +10,7 @@ hero:
   text: 前端开发 · 持续沉淀
   tagline: 分享 Vue、React、工程化、静态站点搭建等实战经验
   image:
-    src: https://picsum.photos/200/200 # 首页图标/头像
+    src: /logo.png # 首页图标/头像
     alt: 博客图标
   actions:
     - theme: brand

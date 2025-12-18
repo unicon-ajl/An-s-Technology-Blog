@@ -6,12 +6,23 @@ const base =
 // VitePress 仅支持 ES 模块导出，需替换 module.exports 为 export default
 export default {
   // ===================== 顶层全局配置 =====================
-  title: "小安的技术博客",
+  base: base, // 站点基础路径
+  title: "小安的技术博客", // 网站标题
   description:
-    "专注前端技术分享，包含VuePress建站、Vue/React框架、工程化工具等实战内容",
-  base: base,
-  lang: "zh-CN",
+    "专注前端技术分享，包含VuePress建站、Vue/React框架、工程化工具等实战内容", // 网站描述
+  lang: "zh-CN", // 站点语言
+  appearance: true, // 启用深色模式切换
+  ignoreDeadLinks: true, // 忽略死链，避免构建报错
 
+  // ===================== 头部标签配置 =====================
+  // .vitepress/config.js
+  head: [
+    // 正确写法（用模板字符串拼接整个 href 属性值）
+    // ["link", { rel: "icon", href: `${base}favicon.ico` }],
+    ["link", { rel: "icon", href: `${base}favicon.ico` }],
+  ],
+
+  // ===================== Markdown 配置 =====================
   markdown: {
     headers: {
       level: [1, 2, 3],
@@ -20,6 +31,7 @@ export default {
 
   // ===================== 主题配置 =====================
   themeConfig: {
+    logo: "/favicon.ico", // 站点 Logo，路径相对于 base
     // 新增：默认收起左侧侧边栏（全局生效）
     sidebarCollapsed: true,
 
