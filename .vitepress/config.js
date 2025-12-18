@@ -35,6 +35,11 @@ export default {
     // 新增：默认收起左侧侧边栏（全局生效）
     sidebarCollapsed: true,
 
+    // 搜索配置
+    search: {
+      provider: "local",
+    },
+
     nav: [
       { text: "首页", link: "/" },
       { text: "指南", link: "/guide/" },
