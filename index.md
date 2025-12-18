@@ -22,7 +22,7 @@ hero:
 
 features:
   - icon: 📖
-    title: VuePress 实战
+    title: VitePress 实战
     details: 从 0 到 1 搭建个人技术博客，配置优化、插件开发、部署上线全流程。
     link: /guide/
   - icon: ⚙️
@@ -39,5 +39,5 @@ features:
 <div class="vp-doc" style="margin-top: 3rem; text-align: center;">
   <h3>📮 联系我</h3>
   <p>GitHub：<a href="https://github.com/unicon-ajl/An-s-Technology-Blog" target="_blank">unicon-ajl/An-s-Technology-Blog</a></p>
-  <p style="color: #999; margin-top: 2rem;">© 2025 小安的技术博客 | MIT 许可证</p>
+  <p style="color: #999; margin-top: 2rem;">© 2025 小安的技术博客</p>
 </div>
