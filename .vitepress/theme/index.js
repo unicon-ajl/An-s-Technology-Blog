@@ -1,7 +1,16 @@
+import { h } from "vue";
 import DefaultTheme from "vitepress/theme";
+import "./style.css"; // 引入自定义样式
+import BackToTop from "./components/BackToTop.vue";
 
 export default {
   ...DefaultTheme,
+  Layout() {
+    return h(DefaultTheme.Layout, null, {
+      // 在页面底部插入回到顶部按钮
+      "layout-bottom": () => h(BackToTop),
+    });
+  },
   enhanceApp({ app }) {
     // 全局图片预览功能（仅长按左键可拖拽）
     app.mixin({

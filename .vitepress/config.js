@@ -35,11 +35,7 @@ export default {
     // 新增：默认收起左侧侧边栏（全局生效）
     sidebarCollapsed: true,
 
-    // 搜索配置
-    search: {
-      provider: "local",
-    },
-
+    // 顶部导航栏配置
     nav: [
       { text: "首页", link: "/" },
       { text: "指南", link: "/guide/" },
@@ -56,7 +52,7 @@ export default {
       },
     ],
 
-    // 核心修正：删除重复的侧边栏分组，保持配置唯一
+    // 侧边栏配置
     sidebar: {
       "/guide/": [
         {
@@ -97,28 +93,72 @@ export default {
       ],
     },
 
+    // 页面底部配置
     lastUpdated: {
       text: "最后更新于",
     },
 
+    // 编辑此页链接配置
     editLink: {
       pattern:
         "https://github.com/unicon-ajl/An-s-Technology-Blog/edit/master/:path",
       text: "发现错误？点击编辑",
     },
 
+    // 页脚配置
     footer: {
       message: "MIT Licensed",
       copyright: "Copyright © 2025 小安 版权所有",
     },
 
-    // 修正：仅显示 h2/h3 作为右侧目录（符合 VitePress 默认规范）
+    // 大纲导航配置
     outline: {
       level: [1, 2, 3],
       label: "页面目录",
     },
 
+    // 搜索配置
+    search: {
+      provider: "local",
+      // 【必选】参与搜索的文件范围（glob 语法）
+      include: [
+        "**/*.md", // 所有 Markdown 文件
+        "**/*.html", // 所有 HTML 文件（若有）
+      ],
+
+      // 【可选】排除不参与搜索的文件/目录
+      exclude: [
+        "**/node_modules/**", // 排除 node_modules
+        "**/dist/**", // 排除构建产物
+        "**/public/**", // 排除静态资源目录
+        "**/README.md", // （可选）排除根目录 README
+      ],
+
+      // 【可选】搜索结果最大显示数量（默认：10）
+      limit: 15,
+
+      // 【可选】是否区分大小写（默认：false，不区分）
+      caseSensitive: false,
+
+      // 【可选】搜索框占位提示文字
+      placeholder: "搜索文档内容...",
+
+      // 【可选】无匹配结果时的提示文字
+      emptyText: "未找到相关内容",
+
+      // 【可选】搜索结果的标题长度限制（避免过长）
+      resultTitleLength: 50,
+
+      // 【可选】搜索结果的描述长度限制
+      resultDescriptionLength: 100,
+
+      // 【可选】是否高亮搜索关键词（默认：true）
+      highlightMatches: true,
+    },
+
+    // 启用页面滚动
     smoothScroll: true,
+    // 启用返回顶部按钮
     backToTop: true,
   },
 

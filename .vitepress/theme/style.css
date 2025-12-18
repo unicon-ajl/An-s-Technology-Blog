@@ -1,0 +1,16 @@
+/* 搜索按钮 - 基础样式 */
+.DocSearch.DocSearch-Button {
+  width: 240px;
+  border: 1px solid #e5e7eb; /* 默认边框 */
+  border-radius: 8px; /* 圆角 */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* 过渡动画 */
+}
+
+/* 搜索按钮 - 触摸/聚焦/ hover 效果 */
+.DocSearch.DocSearch-Button:focus,
+.DocSearch.DocSearch-Button:active,
+.DocSearch.DocSearch-Button:hover {
+  outline: none; /* 清除默认轮廓 */
+  border-color: #3b82f6; /* 边框颜色（可改） */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); /* 外发光效果 */
+}
