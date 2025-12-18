@@ -1,10 +1,15 @@
+// 本地开发环境：npm run dev → base 为 '/'
+// 生产部署环境：npm run build → base 为 '/An-s-Technology-Blog/'
+const base =
+  process.env.NODE_ENV === "production" ? "/An-s-Technology-Blog/" : "/";
+
 // VitePress 仅支持 ES 模块导出，需替换 module.exports 为 export default
 export default {
   // ===================== 顶层全局配置 =====================
   title: "小安的技术博客",
   description:
     "专注前端技术分享，包含VuePress建站、Vue/React框架、工程化工具等实战内容",
-  base: "/",
+  base: base,
   lang: "zh-CN",
 
   markdown: {
