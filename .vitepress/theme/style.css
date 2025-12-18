@@ -16,7 +16,6 @@ html::-webkit-scrollbar {
 /* ====================== 搜索按钮 ========================= */
 /* 搜索按钮 - 基础样式 */
 .DocSearch.DocSearch-Button {
-  width: 240px;
   border: 1px solid #e5e7eb; /* 默认边框 */
   border-radius: 8px; /* 圆角 */
   transition: border-color 0.2s ease, box-shadow 0.2s ease; /* 过渡动画 */
