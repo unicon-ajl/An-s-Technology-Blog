@@ -14,6 +14,8 @@ BASE="/"
 PROJECT_ROOT=$(cd "$(dirname "$0")/.." && pwd)
 # 构建目录绝对路径（核心优化：避免相对路径漂移）
 BUILD_PATH="${PROJECT_ROOT}/${BUILD_DIR}"
+# 根目录README.md路径
+README_PATH="${PROJECT_ROOT}/README.md"
 
 # ===================== 工具函数（优雅输出日志） =====================
 info() {
@@ -35,14 +37,22 @@ if [ ! -d "${BUILD_PATH}" ]; then
   error "构建目录不存在！路径：${BUILD_PATH}\n请先确保 yarn build 执行成功"
 fi
 
+# ===================== 新增：复制根目录README.md到构建目录 =====================
+if [ -f "${README_PATH}" ]; then
+  info "复制根目录README.md到构建目录..."
+  cp "${README_PATH}" "${BUILD_PATH}/" || error "复制README.md失败，请检查文件权限"
+else
+  warn "根目录未找到README.md，跳过复制"
+fi
+
 # ===================== 部署到 GitHub Pages =====================
 info "开始部署到 GitHub Pages..."
 # 进入构建目录（绝对路径+容错）
 cd "${BUILD_PATH}" || error "无法进入构建目录：${BUILD_PATH}"
 
-# 初始化 git 并提交
+# 初始化 git 并提交（包含README.md）
 git init
-git add -A
+git add -A  # 此时会包含复制过来的README.md
 git commit -m "deploy: $(date +'%Y-%m-%d %H:%M:%S')" || info "无更新内容，跳过提交"
 git push -f "${REPO_URL}" "master:${DEPLOY_BRANCH}" || error "部署推送失败，请检查仓库权限/网络"
 
