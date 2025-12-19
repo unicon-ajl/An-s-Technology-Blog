@@ -1,3 +1,7 @@
+// 导航配置项
+import { navigateConfig } from "../utils/navigate";
+import { sidebarConfig } from "../utils/sidebar";
+
 // 本地开发环境：npm run dev → base 为 '/'
 // 生产部署环境：npm run build → base 为 '/An-s-Technology-Blog/'
 const base =
@@ -36,66 +40,10 @@ export default {
     sidebarCollapsed: true,
 
     // 顶部导航栏配置
-    nav: [
-      { text: "首页", link: "/" },
-      { text: "指南", link: "/guide/" },
-      { text: "关于", link: "/about/" },
-      {
-        text: "更多",
-        items: [
-          {
-            text: "GitHub",
-            link: "https://github.com/unicon-ajl/An-s-Technology-Blog",
-          },
-          { text: "掘金", link: "https://juejin.cn/user/yourid" },
-        ],
-      },
-    ],
+    nav: navigateConfig,
 
     // 侧边栏配置
-    sidebar: {
-      "/guide/": [
-        {
-          text: "Blog 指南",
-          // collapsed: false, // 可选：默认折叠（false 为默认展开）
-          items: [{ text: "指南", link: "/guide/" }],
-        },
-        {
-          text: "VitePress 入门",
-          collapsed: true,
-          items: [
-            { text: "快速上手", link: "/guide/getting-started" },
-            { text: "目录结构", link: "/guide/directory-structure" },
-          ],
-        },
-        {
-          text: "前端工程化",
-          collapsed: true,
-          items: [
-            { text: "Webpack 基础", link: "/guide/webpack-basic" },
-            { text: "Yarn 使用技巧", link: "/guide/yarn-usage" },
-          ],
-        },
-      ],
-      "/about/": [
-        {
-          text: "关于页面",
-          collapsed: false,
-          items: [
-            { text: "首页", link: "/about/" },
-            { text: "博主介绍", link: "/about/me" },
-          ],
-        },
-        {
-          text: "更多信息",
-          collapsed: true,
-          items: [
-            { text: "联系方式", link: "/about/contact" },
-            { text: "博客介绍", link: "/about/blog.md" },
-          ],
-        },
-      ],
-    },
+    sidebar: sidebarConfig,
 
     // 页面底部配置
     lastUpdated: {
