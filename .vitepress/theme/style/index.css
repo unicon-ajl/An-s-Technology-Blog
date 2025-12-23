@@ -2,7 +2,7 @@
 @import "./base.css";
 
 /* 功能模块样式 */
-@import "./sidebar-collapse.css";
+@import "./sidebar-toggle.css";
 @import "./image-preview.css";
 
 /* 全局通用样式（补充） */

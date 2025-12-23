@@ -1,6 +1,7 @@
 // .vitepress/theme/index.js
 import { h } from "vue"
 import DefaultTheme from "vitepress/theme"
+import "./style/index.css"
 import BackToTop from "./components/BackToTop.vue"
 import { initSidebarToggle } from "./modules/sidebar-toggle"
 
