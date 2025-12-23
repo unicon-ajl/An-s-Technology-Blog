@@ -1,0 +1,11 @@
+/* 全局基础样式（原style.css） */
+@import "./base.css";
+
+/* 功能模块样式 */
+@import "./sidebar-collapse.css";
+@import "./image-preview.css";
+
+/* 全局通用样式（补充） */
+.back-to-top {
+  z-index: 9998 !important; /* 确保不被遮挡 */
+}
