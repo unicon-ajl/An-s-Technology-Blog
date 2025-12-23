@@ -1,7 +1,7 @@
 /**
  * 侧边栏收缩/展开按钮控制模块
  * 功能：
- * 1. 仅在宽度>960px且非首页（路径≠/）时显示按钮
+ * 1. 仅在宽度>960px且非首页时显示按钮（适配开发/生产环境基础路径）
  * 2. 按钮插入到搜索框子元素中
  * 3. 响应窗口缩放、路由变化自动创建/销毁按钮
  * 4. 点击按钮控制侧边栏、内容区样式切换（移除右侧目录逻辑）
@@ -15,6 +15,32 @@ export function initSidebarToggle() {
   let originalPushState = null // 保存原始history.pushState
   let originalReplaceState = null // 保存原始history.replaceState
 
+  // ========== 工具函数 ==========
+  /**
+   * 判断是否处于浏览器环境（解决SSR环境window不存在问题）
+   * @returns {boolean} 是否为浏览器环境
+   */
+  const isBrowserEnv = () =>
+    typeof window !== "undefined" && typeof document !== "undefined"
+
+  // ========== 环境配置（新增：适配生产环境基础路径） ==========
+  /**
+   * 获取当前环境的基础路径（适配VitePress生产环境base配置）
+   * @returns {string} 基础路径（开发环境为/，生产环境如/An-s-Technology-Blog/）
+   */
+  const getBasePath = () => {
+    if (!isBrowserEnv()) return "/"
+    // 方式1：从VitePress配置中读取（推荐，需确保配置导出）
+    // const base = window.__VP_CONFIG__?.base || '/'
+    // 方式2：自动解析URL前缀（兼容无配置的场景）
+    const pathParts = window.location.pathname.split("/").filter(Boolean)
+    return pathParts.length > 0 ? `/${pathParts[0]}/` : "/"
+  }
+  // 区分开发/生产环境（Vite内置环境变量）
+  const IS_PRODUCTION = import.meta.env.PROD
+  // 基础路径（初始化时获取）
+  const BASE_PATH = isBrowserEnv() ? getBasePath() : "/"
+
   // ========== DOM选择器常量（统一管理，便于维护） ==========
   const SELECTORS = {
     sidebar: ".VPSidebar",
@@ -23,14 +49,6 @@ export function initSidebarToggle() {
     contentContainer: ".VPDoc .content-container",
     searchBox: ".VPNavBarSearch.search",
   }
-
-  // ========== 工具函数 ==========
-  /**
-   * 判断是否处于浏览器环境（解决SSR环境window不存在问题）
-   * @returns {boolean} 是否为浏览器环境
-   */
-  const isBrowserEnv = () =>
-    typeof window !== "undefined" && typeof document !== "undefined"
 
   /**
    * 安全获取DOM元素
@@ -146,19 +164,28 @@ export function initSidebarToggle() {
 
   /**
    * 检查按钮显示条件（宽度+路径），控制按钮创建/销毁
+   * 新增：适配开发/生产环境的首页路径判断
    */
   const checkDisplayCondition = () => {
     if (!isBrowserEnv()) return
 
     const currentWidth = window.innerWidth
     const currentPath = window.location.pathname
+    // 适配首页判断：开发环境为/，生产环境为基础路径（如/An-s-Technology-Blog/）
+    const isHomePage = IS_PRODUCTION
+      ? currentPath === BASE_PATH
+      : currentPath === "/"
+
     console.debug("[SidebarToggle] 检查条件：", {
       width: currentWidth,
       path: currentPath,
+      basePath: BASE_PATH,
+      isHomePage: isHomePage,
+      isProduction: IS_PRODUCTION,
     })
 
     // 不满足显示条件：销毁按钮
-    if (currentWidth <= 960 || currentPath === "/") {
+    if (currentWidth <= 960 || isHomePage) {
       destroyToggleButton()
       return
     }
