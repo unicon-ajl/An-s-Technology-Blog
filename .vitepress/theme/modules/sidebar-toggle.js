@@ -6,7 +6,7 @@
  * 3. 响应窗口缩放、路由变化自动创建/销毁按钮
  * 4. 点击按钮控制侧边栏、内容区样式切换（移除右侧目录逻辑）
  */
-export function initSidebarToggle() {
+export function initSidebarToggle () {
   // ========== 状态管理 ==========
   let isSidebarCollapsed = false // 侧边栏是否收缩（语义化命名）
   let toggleButton = null // 收缩按钮DOM引用
@@ -43,9 +43,9 @@ export function initSidebarToggle() {
 
   // ========== DOM选择器常量（统一管理，便于维护） ==========
   const SELECTORS = {
+    navBar: ".VPNavBar",
     sidebar: ".VPSidebar",
     vpContent: "#VPContent",
-    header: "header",
     contentContainer: ".VPDoc .content-container",
     searchBox: ".VPNavBarSearch.search",
   }
@@ -90,27 +90,27 @@ export function initSidebarToggle() {
     if (!isBrowserEnv()) return
 
     // 安全获取所有需要操作的DOM元素
+    const navBar = getElement(SELECTORS.navBar)
     const sidebar = getElement(SELECTORS.sidebar)
     const vpContent = getElement(SELECTORS.vpContent)
-    const header = getElement(SELECTORS.header)
     const contentContainer = getElement(SELECTORS.contentContainer)
 
     // 元素不全则终止执行
-    if (!sidebar || !vpContent || !header || !contentContainer) return
+    if (!navBar || !sidebar || !vpContent || !contentContainer) return
 
     if (isSidebarCollapsed) {
       // 展开侧边栏：恢复默认样式
+      navBar.style.background = "transparent"
       sidebar.style.transform = "translateX(0)"
       vpContent.style.paddingLeft = ""
-      header.style.background = ""
       contentContainer.style.maxWidth = "688px"
       toggleButton.textContent = "✕ 收缩"
     } else {
       // 收缩侧边栏：修改样式
+      navBar.style.background = "var(--vp-c-bg)"
       sidebar.style.transform = "translateX(-100%)"
       vpContent.style.paddingLeft =
         "max(32px, calc((100% - (var(--vp-layout-max-width))) / 2))"
-      header.style.background = "#fff"
       contentContainer.style.maxWidth = "100%"
       toggleButton.textContent = "☰ 展开"
     }
@@ -221,7 +221,7 @@ export function initSidebarToggle() {
    * 初始化窗口缩放监听（防抖处理）
    */
   const initResizeListener = () => {
-    if (!isBrowserEnv()) return () => {}
+    if (!isBrowserEnv()) return () => { }
 
     const handleResize = () => {
       clearTimeout(resizeTimer)
@@ -260,6 +260,6 @@ export function initSidebarToggle() {
     }
   } else {
     // 服务端环境返回空清理函数
-    return () => {}
+    return () => { }
   }
 }
