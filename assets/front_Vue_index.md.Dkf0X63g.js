@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.GQ0CnO8R.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"front/Vue/index.md","filePath":"front/Vue/index.md","lastUpdated":1766131208000}'),n={name:"front/Vue/index.md"};function r(o,s,d,c,i,p){return a(),t("div")}const m=e(n,[["render",r]]);export{_ as __pageData,m as default};
